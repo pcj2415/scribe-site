@@ -1,61 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact — Scribe</title>
 <meta name="description" content="Get in touch with the Scribe team for support, questions, or partnership inquiries.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" href="/email-logo.png">
+<style>
+  :root{--bg:#000;--card:#0A0A0A;--line:rgba(255,255,255,.12);--gold:#CBBA84;--gold-bright:#F8DD95;--text:#fff;--muted:#9a9a9a}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.65}
+  #bg-net{position:fixed;inset:0;z-index:0;pointer-events:none}
+  nav,main,footer{position:relative;z-index:1}
+  img{max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .nav-logo img{height:34px;width:auto;display:block}
+  .nav-links{display:flex;gap:28px;align-items:center;font-size:15px;color:var(--muted)}
+  .nav-links a:hover{color:#fff}
+  .btn{display:inline-block;background:linear-gradient(180deg,#D0AB62,#B7924B);color:#0a0a0a;font-weight:700;border-radius:10px;padding:8px 18px;font-size:14px}
+  .btn:hover{opacity:.9}
+  main{max-width:760px;margin:0 auto;padding:72px 24px 96px}
+  .eyebrow{color:var(--gold-bright);font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px}
+  h1{font-size:42px;font-weight:800;letter-spacing:-.3px;line-height:1.15;margin-bottom:10px}
+  .updated{color:var(--muted);font-size:14px;margin-bottom:40px}
+  h2{font-size:22px;font-weight:700;margin:40px 0 12px}
+  h3{font-size:17px;font-weight:700;margin:24px 0 8px;color:#e8e8e8}
+  p{color:#cfcfcf;font-size:16px;margin-bottom:14px}
+  ul{margin:0 0 16px 22px}
+  li{color:#cfcfcf;font-size:16px;margin-bottom:8px}
+  strong{color:#fff}
+  main a{color:var(--gold-bright);text-decoration:underline;text-underline-offset:2px}
+  .email{display:inline-block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 22px;color:var(--gold-bright);font-size:17px;font-weight:600;margin:6px 0 18px;text-decoration:none}
+  footer{border-top:1px solid var(--line);padding:36px 0;color:#6a6a6a;font-size:13px}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  .foot-links{display:flex;gap:22px}
+  .foot-links a:hover{color:#fff}
+  @media(max-width:840px){h1{font-size:32px}.nav-links{display:none}main{padding:52px 20px 72px}}
+</style>
 </head>
 <body>
 
-<div class="header-bar">
-  <nav>
-    <a href="index.html" class="brand"><span class="mark">S</span> Scribe</a>
+<canvas id="bg-net" aria-hidden="true"></canvas>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="nav-logo" href="/"><img src="/assets/logo-nav.png" alt="Scribe"></a>
     <div class="nav-links">
-      <a href="contact.html">Contact</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/#faq">FAQ</a>
     </div>
-  </nav>
-</div>
+    <a class="btn" href="TODO_APP_STORE_URL">Download</a>
+  </div>
+</nav>
 
 <main>
-<div class="doc">
-
   <div class="eyebrow">Get in touch</div>
   <h1>Contact</h1>
-  <p class="updated">We'd love to hear from you.</p>
-
+  <p style="font-size:19px;color:#e8e8e8;margin-bottom:6px">We'd love to hear from you.</p>
   <p>Whether you have a question about Scribe, need support, want to report an issue, or are interested in partnering with us, reach out anytime. We read every message.</p>
-
-  <div class="contact-card">
-    <p style="margin-bottom:6px;color:#8d8a82;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;">Email us</p>
-    <a href="mailto:support@scribetrading.com" class="email-big">support@scribetrading.com</a>
-  </div>
-
-  <p style="margin-top:32px;">For business and partnership inquiries related to our parent company, you can also reach O5na Labs LLC at <a href="mailto:support@o5nalabs.com">support@o5nalabs.com</a>.</p>
-
+  <h2>Email us</h2>
+  <a class="email" href="mailto:support@scribetrading.com">support@scribetrading.com</a>
+  <p>For business and partnership inquiries related to our parent company, you can also reach O5na Labs LLC at <a href="mailto:support@o5nalabs.com">support@o5nalabs.com</a>.</p>
   <h2>Support response times</h2>
   <p>We aim to respond to all support requests within 1&ndash;2 business days. Scribe is built and maintained by a small, dedicated team, and we appreciate your patience.</p>
 
-</div>
 </main>
 
 <footer>
-  <div class="foot-inner">
-    <div>&copy; 2026 O5na Labs LLC. Scribe is a product of O5na Labs LLC.</div>
+  <div class="wrap foot-inner">
+    <div>© 2026 O5na Labs LLC · Scribe</div>
     <div class="foot-links">
-      <a href="contact.html">Contact</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-      <a href="ai-disclosure.html">AI Disclosure</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/ai-disclosure.html">AI Disclosure</a>
+      <a href="/contact.html">Contact</a>
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var canvas=document.getElementById('bg-net');if(!canvas)return;
+  var ctx=canvas.getContext('2d');
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dpr=Math.min(window.devicePixelRatio||1,2);var W,H,pts=[];var LINK=130;var mouse={x:-9999,y:-9999};
+  function resize(){W=window.innerWidth;H=window.innerHeight;canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0);
+    var t=Math.min(90,Math.floor(W*H/22000));pts=[];
+    for(var i=0;i<t;i++){pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,r:Math.random()*1.6+.6,b:Math.random()<.18});}}
+  function step(){ctx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){var a=pts[i];for(var j=i+1;j<pts.length;j++){var b=pts[j];var dx=a.x-b.x,dy=a.y-b.y,d2=dx*dx+dy*dy;
+      if(d2<LINK*LINK){var al=(1-Math.sqrt(d2)/LINK)*.10;ctx.strokeStyle='rgba(203,186,132,'+al.toFixed(3)+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}}
+    for(var k=0;k<pts.length;k++){var p=pts[k];p.x+=p.vx;p.y+=p.vy;
+      var mdx=p.x-mouse.x,mdy=p.y-mouse.y,md2=mdx*mdx+mdy*mdy;
+      if(md2<16000){var f=(16000-md2)/16000*.35;p.x+=(mdx/Math.sqrt(md2||1))*f;p.y+=(mdy/Math.sqrt(md2||1))*f;}
+      if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;
+      ctx.fillStyle=p.b?'rgba(248,221,149,0.55)':'rgba(203,186,132,0.30)';ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();}
+    if(!reduced)requestAnimationFrame(step);}
+  window.addEventListener('resize',function(){resize();if(reduced)step();});
+  window.addEventListener('mousemove',function(e){mouse.x=e.clientX;mouse.y=e.clientY;});
+  document.addEventListener('visibilitychange',function(){if(!document.hidden&&!reduced)requestAnimationFrame(step);});
+  resize();step();
+})();
+</script>
 
 </body>
 </html>

@@ -1,59 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Terms of Service — Scribe</title>
 <meta name="description" content="The terms governing your use of the Scribe trading journal app.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" href="/email-logo.png">
+<style>
+  :root{--bg:#000;--card:#0A0A0A;--line:rgba(255,255,255,.12);--gold:#CBBA84;--gold-bright:#F8DD95;--text:#fff;--muted:#9a9a9a}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.65}
+  #bg-net{position:fixed;inset:0;z-index:0;pointer-events:none}
+  nav,main,footer{position:relative;z-index:1}
+  img{max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .nav-logo img{height:34px;width:auto;display:block}
+  .nav-links{display:flex;gap:28px;align-items:center;font-size:15px;color:var(--muted)}
+  .nav-links a:hover{color:#fff}
+  .btn{display:inline-block;background:linear-gradient(180deg,#D0AB62,#B7924B);color:#0a0a0a;font-weight:700;border-radius:10px;padding:8px 18px;font-size:14px}
+  .btn:hover{opacity:.9}
+  main{max-width:760px;margin:0 auto;padding:72px 24px 96px}
+  .eyebrow{color:var(--gold-bright);font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px}
+  h1{font-size:42px;font-weight:800;letter-spacing:-.3px;line-height:1.15;margin-bottom:10px}
+  .updated{color:var(--muted);font-size:14px;margin-bottom:40px}
+  h2{font-size:22px;font-weight:700;margin:40px 0 12px}
+  h3{font-size:17px;font-weight:700;margin:24px 0 8px;color:#e8e8e8}
+  p{color:#cfcfcf;font-size:16px;margin-bottom:14px}
+  ul{margin:0 0 16px 22px}
+  li{color:#cfcfcf;font-size:16px;margin-bottom:8px}
+  strong{color:#fff}
+  main a{color:var(--gold-bright);text-decoration:underline;text-underline-offset:2px}
+  .email{display:inline-block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 22px;color:var(--gold-bright);font-size:17px;font-weight:600;margin:6px 0 18px;text-decoration:none}
+  footer{border-top:1px solid var(--line);padding:36px 0;color:#6a6a6a;font-size:13px}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  .foot-links{display:flex;gap:22px}
+  .foot-links a:hover{color:#fff}
+  @media(max-width:840px){h1{font-size:32px}.nav-links{display:none}main{padding:52px 20px 72px}}
+</style>
 </head>
 <body>
 
-<div class="header-bar">
-  <nav>
-    <a href="index.html" class="brand"><span class="mark">S</span> Scribe</a>
+<canvas id="bg-net" aria-hidden="true"></canvas>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="nav-logo" href="/"><img src="/assets/logo-nav.png" alt="Scribe"></a>
     <div class="nav-links">
-      <a href="contact.html">Contact</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/#faq">FAQ</a>
     </div>
-  </nav>
-</div>
+    <a class="btn" href="TODO_APP_STORE_URL">Download</a>
+  </div>
+</nav>
 
 <main>
-<div class="doc">
-
   <div class="eyebrow">Legal</div>
   <h1>Terms of Service</h1>
-  <p class="updated">Last updated: June 2026</p>
-
+  <div class="updated">Last updated: June 2026</div>
   <p>These Terms of Service ("Terms") govern your access to and use of the Scribe mobile application and related services (the "Service"), provided by O5na Labs LLC ("O5na Labs," "we," "us," or "our"). By creating an account or using Scribe, you agree to these Terms. If you do not agree, do not use the Service.</p>
-
-  <div class="callout">
-    <p><strong>Important:</strong> Scribe is a trade journaling and tracking tool provided for informational and educational purposes only. It does not provide financial, investment, tax, or trading advice, and nothing in the Service constitutes a recommendation to buy, sell, or hold any security or asset. You are solely responsible for your own trading and investment decisions.</p>
-  </div>
-
+  <p><strong>Important:</strong> Scribe is a trade journaling and tracking tool provided for informational and educational purposes only. It does not provide financial, investment, tax, or trading advice, and nothing in the Service constitutes a recommendation to buy, sell, or hold any security or asset. You are solely responsible for your own trading and investment decisions.</p>
   <h2>1. Eligibility</h2>
   <p>You must be at least 18 years old to use the Service. By using Scribe, you represent that you are 18 or older and capable of forming a binding contract.</p>
-
   <h2>2. Your Account</h2>
   <p>You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. You agree to provide accurate information and to keep it up to date. Notify us promptly of any unauthorized use of your account.</p>
-
   <h2>3. The Service</h2>
   <p>Scribe allows you to record, track, and analyze your trades across multiple asset classes, view performance analytics, and use AI-powered features to gain insights into the data you enter. The Service is a record-keeping and analytical tool only.</p>
-
   <h2>4. Not Financial Advice</h2>
   <p>Scribe, including its analytics, calculations, summaries, and AI features, is provided for informational and educational purposes only. We are not a broker-dealer, investment adviser, financial planner, or tax professional. Nothing in the Service should be construed as financial, investment, legal, or tax advice. Any calculations or data displayed may contain errors or inaccuracies, and you should independently verify any information before relying on it. You are solely responsible for your trading and investment decisions and for any resulting gains or losses.</p>
-
   <h2>5. AI Features</h2>
-  <p>The Service includes AI-powered features that generate insights and responses. These outputs are generated by automated systems, may be inaccurate or incomplete, and must not be relied upon as advice. Please review our <a href="ai-disclosure.html">Scribe AI Disclosure</a> for important information about how these features work and their limitations.</p>
-
+  <p>The Service includes AI-powered features that generate insights and responses. These outputs are generated by automated systems, may be inaccurate or incomplete, and must not be relied upon as advice. Please review our <a href="/ai-disclosure.html">Scribe AI Disclosure</a> for important information about how these features work and their limitations.</p>
   <h2>6. Subscriptions and Payments</h2>
   <p>Certain features of Scribe may require a paid subscription ("Pro"). Subscriptions are billed through the applicable app store (such as the Apple App Store) in accordance with that store's terms. Prices, features, and billing terms will be disclosed at the point of purchase. Subscriptions automatically renew unless canceled, and you may manage or cancel your subscription through your app store account settings. Except where required by law or store policy, payments are non-refundable.</p>
-
   <h2>7. Acceptable Use</h2>
   <p>You agree not to:</p>
   <ul>
@@ -63,46 +85,61 @@
     <li>Reverse engineer, copy, or create derivative works of the Service except as permitted by law.</li>
     <li>Misuse the AI features, including attempting to extract underlying systems or generate harmful content.</li>
   </ul>
-
   <h2>8. Intellectual Property</h2>
   <p>The Service, including its design, features, and content (excluding the trade data you enter), is owned by O5na Labs and protected by intellectual property laws. We grant you a limited, non-exclusive, non-transferable license to use the Service for your personal, non-commercial use. You retain ownership of the trade data you enter.</p>
-
   <h2>9. Disclaimers</h2>
   <p>The Service is provided "as is" and "as available" without warranties of any kind, whether express or implied, including warranties of merchantability, fitness for a particular purpose, accuracy, and non-infringement. We do not warrant that the Service will be uninterrupted, error-free, or that any calculations, data, or AI outputs will be accurate or reliable.</p>
-
   <h2>10. Limitation of Liability</h2>
   <p>To the maximum extent permitted by law, O5na Labs and its members, officers, and affiliates will not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits, trading losses, data, or goodwill, arising out of or related to your use of (or inability to use) the Service, even if advised of the possibility of such damages. To the maximum extent permitted by law, our total liability for any claim relating to the Service will not exceed the amount you paid us, if any, in the twelve months preceding the claim.</p>
-
   <h2>11. Indemnification</h2>
   <p>You agree to indemnify and hold harmless O5na Labs and its members and affiliates from any claims, damages, liabilities, and expenses arising out of your use of the Service or your violation of these Terms.</p>
-
   <h2>12. Termination</h2>
   <p>We may suspend or terminate your access to the Service at any time, with or without notice, for conduct that we believe violates these Terms or is harmful to other users or to us. You may stop using the Service and delete your account at any time.</p>
-
   <h2>13. Changes to These Terms</h2>
   <p>We may update these Terms from time to time. When we do, we will revise the "Last updated" date above. Your continued use of the Service after changes become effective constitutes acceptance of the revised Terms.</p>
-
   <h2>14. Governing Law</h2>
   <p>These Terms are governed by the laws of the State of California, without regard to its conflict of laws principles. Any disputes will be subject to the exclusive jurisdiction of the state and federal courts located in California.</p>
-
   <h2>15. Contact</h2>
   <p>Questions about these Terms? Contact us at <a href="mailto:support@scribetrading.com">support@scribetrading.com</a>.</p>
 
-
-</div>
 </main>
 
 <footer>
-  <div class="foot-inner">
-    <div>&copy; 2026 O5na Labs LLC. Scribe is a product of O5na Labs LLC.</div>
+  <div class="wrap foot-inner">
+    <div>© 2026 O5na Labs LLC · Scribe</div>
     <div class="foot-links">
-      <a href="contact.html">Contact</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-      <a href="ai-disclosure.html">AI Disclosure</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/ai-disclosure.html">AI Disclosure</a>
+      <a href="/contact.html">Contact</a>
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var canvas=document.getElementById('bg-net');if(!canvas)return;
+  var ctx=canvas.getContext('2d');
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dpr=Math.min(window.devicePixelRatio||1,2);var W,H,pts=[];var LINK=130;var mouse={x:-9999,y:-9999};
+  function resize(){W=window.innerWidth;H=window.innerHeight;canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0);
+    var t=Math.min(90,Math.floor(W*H/22000));pts=[];
+    for(var i=0;i<t;i++){pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,r:Math.random()*1.6+.6,b:Math.random()<.18});}}
+  function step(){ctx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){var a=pts[i];for(var j=i+1;j<pts.length;j++){var b=pts[j];var dx=a.x-b.x,dy=a.y-b.y,d2=dx*dx+dy*dy;
+      if(d2<LINK*LINK){var al=(1-Math.sqrt(d2)/LINK)*.10;ctx.strokeStyle='rgba(203,186,132,'+al.toFixed(3)+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}}
+    for(var k=0;k<pts.length;k++){var p=pts[k];p.x+=p.vx;p.y+=p.vy;
+      var mdx=p.x-mouse.x,mdy=p.y-mouse.y,md2=mdx*mdx+mdy*mdy;
+      if(md2<16000){var f=(16000-md2)/16000*.35;p.x+=(mdx/Math.sqrt(md2||1))*f;p.y+=(mdy/Math.sqrt(md2||1))*f;}
+      if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;
+      ctx.fillStyle=p.b?'rgba(248,221,149,0.55)':'rgba(203,186,132,0.30)';ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();}
+    if(!reduced)requestAnimationFrame(step);}
+  window.addEventListener('resize',function(){resize();if(reduced)step();});
+  window.addEventListener('mousemove',function(e){mouse.x=e.clientX;mouse.y=e.clientY;});
+  document.addEventListener('visibilitychange',function(){if(!document.hidden&&!reduced)requestAnimationFrame(step);});
+  resize();step();
+})();
+</script>
 
 </body>
 </html>
