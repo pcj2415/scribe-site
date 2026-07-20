@@ -1,219 +1,412 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scribe — Trading Journal</title>
-<meta name="description" content="Scribe is a multi-asset trading journal for retail traders. Track stocks, options, crypto, forex, and prediction markets with AI-powered insights. Coming soon to iOS.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Scribe: AI Trading Coach — AI Journal for Every Trade</title>
+<meta name="description" content="Scribe is the AI-powered trading journal that uncovers the patterns behind your wins and losses — across stocks, options, crypto, forex, and prediction markets. 7-day free trial.">
+<meta property="og:title" content="Scribe: AI Trading Coach">
+<meta property="og:description" content="Turn every trade into your next edge. The AI trading journal for stocks, options, crypto, and predictions.">
+<meta property="og:image" content="https://scribetrading.com/assets/og.png">
+<meta property="og:url" content="https://scribetrading.com">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/email-logo.png">
 <style>
-  :root {
-    --gold: #d4a827;
-    --gold-bright: #facc15;
-    --gold-deep: #8a6d1a;
-    --bg: #08080a;
-    --bg-soft: #111113;
-    --text: #f4f1e8;
-    --text-muted: #8d8a82;
-    --border: rgba(212, 168, 39, 0.18);
+  :root{
+    --bg:#000000; --card:#0A0A0A; --line:rgba(255,255,255,.12);
+    --gold:#CBBA84; --gold-bright:#F8DD95; --text:#ffffff; --muted:#9a9a9a;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Sora', sans-serif;
-    font-weight: 300;
-    line-height: 1.7;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  body::before {
-    content: "";
-    position: fixed;
-    top: -25%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90vw;
-    height: 70vh;
-    background: radial-gradient(ellipse at center, rgba(212,168,39,0.12), transparent 62%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .wrap { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 0 28px; width: 100%; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
+  /* Ambient particle background */
+  #bg-net{position:fixed;inset:0;z-index:0;pointer-events:none}
+  nav,header,.strip,#features,#pricing,#faq,.final,footer{position:relative;z-index:1}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
-  /* Header bar */
-  .header-bar {
-    background: #000;
-    border-bottom: 1px solid var(--border);
-    position: relative; z-index: 2;
-  }
-  nav {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 28px; max-width: 720px; margin: 0 auto;
-  }
-  .brand {
-    font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px;
-    letter-spacing: -0.01em; color: var(--text); text-decoration: none;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .brand .mark {
-    width: 30px; height: 30px; border-radius: 8px;
-    background: linear-gradient(145deg, var(--gold-bright), var(--gold-deep));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 17px; font-weight: 700; color: #1a1408;
-  }
-  .nav-links { display: flex; gap: 24px; }
-  .nav-links a {
-    color: var(--text-muted); text-decoration: none; font-size: 14px;
-    transition: color 0.25s ease;
-  }
-  .nav-links a:hover { color: var(--gold); }
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .nav-logo img{height:30px;width:auto}
+  .nav-links{display:flex;gap:28px;align-items:center;font-size:15px;color:var(--muted)}
+  .nav-links a:hover{color:#fff}
+  .btn{display:inline-block;background:linear-gradient(180deg,#D0AB62,#B7924B);color:#0a0a0a;font-weight:700;border-radius:12px;padding:12px 24px;font-size:16px;transition:opacity .15s}
+  .btn:hover{opacity:.9}
+  .btn.small{padding:8px 18px;font-size:14px;border-radius:10px}
 
-  /* Hero */
-  main { flex: 1; }
-  header.hero { padding: 110px 0 90px; text-align: center; }
-  .badge {
-    display: inline-block; font-size: 12px; letter-spacing: 0.2em;
-    color: var(--gold); border: 1px solid var(--border); border-radius: 100px;
-    padding: 6px 16px; margin-bottom: 34px;
-    opacity: 0; animation: rise 0.8s ease forwards 0.1s;
-  }
-  h1 {
-    font-family: 'Fraunces', serif; font-weight: 400;
-    font-size: clamp(2.8rem, 8vw, 4.8rem); line-height: 1.04; letter-spacing: -0.02em;
-    margin-bottom: 28px; opacity: 0; animation: rise 0.8s ease forwards 0.25s;
-  }
-  h1 em {
-    font-style: italic;
-    background: linear-gradient(90deg, var(--gold-bright), var(--gold));
-    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-    padding-right: 0.12em;
-    margin-right: -0.04em;
-  }
-  h1 { padding-bottom: 0.08em; }
-  .lede {
-    font-size: clamp(1.05rem, 2.4vw, 1.28rem); color: var(--text-muted);
-    max-width: 520px; margin: 0 auto 40px; font-weight: 300;
-    opacity: 0; animation: rise 0.8s ease forwards 0.4s;
-  }
-  .cta {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: linear-gradient(145deg, var(--gold-bright), var(--gold-deep));
-    color: #1a1408; font-weight: 600; font-size: 15px; font-family: 'Sora';
-    padding: 14px 28px; border-radius: 100px; text-decoration: none;
-    opacity: 0; animation: rise 0.8s ease forwards 0.55s;
-    transition: transform 0.3s ease;
-  }
-  .cta:hover { transform: translateY(-2px); }
-  .cta-note { display:block; margin-top: 16px; font-size: 13px; color: var(--text-muted);
-    opacity: 0; animation: rise 0.8s ease forwards 0.65s; }
+  /* HERO */
+  header{padding:84px 0 40px;text-align:center;position:relative;overflow:hidden}
+  .hero-logo{height:56px;width:auto;margin:0 auto 34px}
+  h1{font-size:56px;line-height:1.12;font-weight:800;letter-spacing:-.5px}
+  .hero-sub{color:var(--muted);font-size:20px;max-width:640px;margin:20px auto 32px}
+  .hero-sub b{color:#fff;font-weight:600}
+  .store-btn{display:inline-flex;align-items:center;gap:10px;background:#0A0A0A;border:1.5px solid rgba(255,255,255,.85);color:#fff;border-radius:12px;padding:12px 26px;font-size:17px;font-weight:600;transition:background .15s}
+  .store-btn:hover{background:#161616}
+  .store-btn svg{width:20px;height:20px;fill:#fff}
+  .hero-phone{max-width:380px;margin:56px auto 0;position:relative}
+  .hero-phone::before{content:"";position:absolute;inset:-8% -14%;background:radial-gradient(closest-side,rgba(203,186,132,.28),transparent 72%);z-index:0}
+  .hero-phone img{position:relative;z-index:1}
 
-  /* Features */
-  .features { padding: 30px 0 80px; }
-  .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .feature {
-    background: var(--bg-soft); border: 1px solid var(--border);
-    border-radius: 16px; padding: 24px;
-  }
-  .feature h3 {
-    font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.15rem;
-    margin-bottom: 8px; color: var(--text);
-  }
-  .feature p { font-size: 0.95rem; color: var(--text-muted); }
-  .feature .ico { color: var(--gold); font-size: 20px; margin-bottom: 12px; display:block; }
+  /* STRIP */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;text-align:center;color:var(--muted);font-size:15px;letter-spacing:.4px}
+  .strip .dot{color:var(--gold);padding:0 10px}
 
-  /* Footer */
-  footer {
-    border-top: 1px solid var(--border); padding: 40px 0;
-    position: relative; z-index: 1;
-  }
-  .foot-inner {
-    max-width: 720px; margin: 0 auto; padding: 0 28px;
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
-    font-size: 13px; color: var(--text-muted);
-  }
-  .foot-links { display: flex; gap: 20px; flex-wrap: wrap; }
-  .foot-links a { color: var(--text-muted); text-decoration: none; transition: color 0.25s; }
-  .foot-links a:hover { color: var(--gold); }
+  /* FEATURES */
+  section.feature{padding:96px 0}
+  .feat{display:flex;align-items:center;gap:64px}
+  .feat.rev{flex-direction:row-reverse}
+  .feat-img{flex:0 0 44%;position:relative}
+  .feat-img::before{content:"";position:absolute;inset:-6% -12%;background:radial-gradient(closest-side,rgba(203,186,132,.16),transparent 70%)}
+  .feat-img img{position:relative;border-radius:24px}
+  .feat-copy{flex:1}
+  .eyebrow{color:var(--gold-bright);font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px}
+  .feat-copy h2{font-size:38px;line-height:1.18;font-weight:800;letter-spacing:-.3px;margin-bottom:16px}
+  .feat-copy p{color:var(--muted);font-size:17px;max-width:480px}
 
-  @keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  /* PRICING */
+  #pricing{padding:100px 0;border-top:1px solid var(--line)}
+  .center{text-align:center}
+  #pricing h2{font-size:42px;font-weight:800;letter-spacing:-.3px}
+  .pricing-sub{color:var(--muted);font-size:18px;margin:14px 0 48px}
+  table{width:100%;max-width:680px;margin:0 auto 56px;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  th,td{padding:15px 18px;text-align:left;font-size:15px;border-bottom:1px solid var(--line)}
+  tr:last-child td{border-bottom:none}
+  thead th{color:var(--gold-bright);font-size:14px;font-weight:700}
+  thead th:nth-child(2),thead th:nth-child(3){text-align:center;width:110px}
+  td:nth-child(2),td:nth-child(3){text-align:center}
+  td:nth-child(2){color:var(--muted)}
+  td:nth-child(3){color:var(--gold-bright);font-weight:600}
+  .plans{display:flex;gap:20px;max-width:680px;margin:0 auto 22px;align-items:stretch}
+  .plan{flex:1;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 24px;text-align:center;display:flex;flex-direction:column;justify-content:center;position:relative}
+  .plan.featured{border:1.5px solid var(--gold-bright)}
+  .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold-bright);color:#0a0a0a;font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 14px;border-radius:999px;white-space:nowrap}
+  .plan .name{font-size:15px;font-weight:700;letter-spacing:1px;color:#fff;margin-bottom:8px}
+  .plan .price{font-size:40px;font-weight:800;color:var(--gold-bright)}
+  .plan .per{color:var(--muted);font-size:14px}
+  .plan .note{color:var(--muted);font-size:13px;margin-top:8px}
+  .pill{display:inline-block;border:1px solid var(--gold);color:var(--gold-bright);font-size:12px;font-weight:600;border-radius:999px;padding:4px 12px;margin-top:10px}
+  .trial{color:var(--muted);font-size:15px;margin:6px 0 26px}
+  .trial .shield{color:var(--gold-bright)}
 
-  @media (max-width: 600px) {
-    header.hero { padding: 70px 0 60px; }
-    .feature-grid { grid-template-columns: 1fr; }
-    .nav-links { gap: 16px; }
-    .nav-links a { font-size: 13px; }
-    .foot-inner { flex-direction: column; }
+  /* FAQ */
+  #faq{padding:96px 0;border-top:1px solid var(--line)}
+  #faq h2{font-size:42px;font-weight:800;text-align:center;margin-bottom:44px;letter-spacing:-.3px}
+  details{max-width:720px;margin:0 auto;border-bottom:1px solid var(--line)}
+  summary{cursor:pointer;padding:20px 4px;font-size:17px;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--gold);font-size:22px;font-weight:400}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--muted);font-size:15.5px;padding:0 4px 22px;max-width:660px}
+
+  /* FINAL CTA */
+  .final{padding:110px 0;text-align:center;border-top:1px solid var(--line);position:relative;overflow:hidden}
+  .final::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:640px;height:340px;background:radial-gradient(closest-side,rgba(203,186,132,.14),transparent 75%)}
+  .final h2{font-size:44px;font-weight:800;letter-spacing:-.3px;position:relative}
+  .final p{color:var(--muted);font-size:18px;margin:14px 0 34px;position:relative}
+  .final .store-btn{position:relative}
+
+  footer{border-top:1px solid var(--line);padding:36px 0;color:#6a6a6a;font-size:13px}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  .foot-links{display:flex;gap:22px}
+  .foot-links a:hover{color:#fff}
+
+  @media (max-width:840px){
+    h1{font-size:38px}
+    .hero-sub{font-size:17px}
+    .feat,.feat.rev{flex-direction:column;gap:40px}
+    .feat-img{flex:none;max-width:320px}
+    .feat-copy h2{font-size:30px}
+    .feat-copy{text-align:center}
+    .feat-copy p{margin:0 auto}
+    section.feature{padding:64px 0}
+    .plans{flex-direction:column}
+    .nav-links{display:none}
+    #pricing h2,#faq h2,.final h2{font-size:32px}
   }
 </style>
 </head>
 <body>
 
-<div class="header-bar">
-  <nav>
-    <a href="index.html" class="brand"><span class="mark">S</span> Scribe</a>
+<canvas id="bg-net" aria-hidden="true"></canvas>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="nav-logo" href="#"><img src="/email-logo.png" alt="Scribe"></a>
     <div class="nav-links">
-      <a href="contact.html">Contact</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
     </div>
-  </nav>
+    <a class="btn small" href="TODO_APP_STORE_URL">Download</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <img class="hero-logo" src="/email-logo.png" alt="Scribe">
+    <h1>Become a Better Trader.</h1>
+    <p class="hero-sub">Scribe is the <b>AI-powered trading journal</b> that uncovers the patterns behind your wins and losses — across stocks, options, crypto, and predictions.</p>
+    <a class="store-btn" href="TODO_APP_STORE_URL">
+      <svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+      Download on the App Store
+    </a>
+    <div class="hero-phone"><img src="assets/shot-ai.png" alt="Scribe AI trading coach analyzing trades"></div>
+  </div>
+</header>
+
+<div class="strip">
+  Built for traders in every market <span class="dot">·</span> Stocks <span class="dot">·</span> Options <span class="dot">·</span> Crypto <span class="dot">·</span> Forex <span class="dot">·</span> Predictions
 </div>
 
-<main>
-<div class="wrap">
-  <header class="hero">
-    <span class="badge">COMING SOON TO iOS</span>
-    <h1>Your trades, finally <em>understood</em>.</h1>
-    <p class="lede">Scribe is a multi-asset trading journal for retail traders. Log stocks, options, crypto, forex, and prediction markets, then get AI-powered insights into your own trading patterns.</p>
-    <a href="contact.html" class="cta">Get notified at launch →</a>
-    <span class="cta-note">Launching on the App Store.</span>
-  </header>
+<div id="features">
 
-  <section class="features">
-    <div class="feature-grid">
-      <div class="feature">
-        <span class="ico">◆</span>
-        <h3>Every asset class</h3>
-        <p>Stocks, options, crypto, forex, and prediction markets, all in one journal with accurate P&L for each.</p>
-      </div>
-      <div class="feature">
-        <span class="ico">✦</span>
-        <h3>AI trading coach</h3>
-        <p>Ask questions about your own trades and uncover the patterns behind your wins and losses.</p>
-      </div>
-      <div class="feature">
-        <span class="ico">▲</span>
-        <h3>Performance analytics</h3>
-        <p>Win rate, average win and loss, best and worst trades, and a calendar view of your edge over time.</p>
-      </div>
-      <div class="feature">
-        <span class="ico">●</span>
-        <h3>Built to share</h3>
-        <p>Beautiful, screenshot-ready trade and monthly summary cards designed for the trading community.</p>
+  <section class="feature">
+    <div class="wrap feat">
+      <div class="feat-img"><img src="assets/shot-dashboard.png" alt="Scribe performance dashboard"></div>
+      <div class="feat-copy">
+        <div class="eyebrow">See Your Edge</div>
+        <h2>Your performance, at a glance.</h2>
+        <p>Track your P&amp;L, win rate, and equity curve across every account on one beautiful dashboard. The best journal is the one you actually open — Scribe makes checking your performance a habit, not a chore.</p>
       </div>
     </div>
   </section>
+
+  <section class="feature">
+    <div class="wrap feat rev">
+      <div class="feat-img"><img src="assets/shot-ai.png" alt="Scribe AI coaching chat"></div>
+      <div class="feat-copy">
+        <div class="eyebrow">AI Coaching</div>
+        <h2>An AI that actually coaches you.</h2>
+        <p>Ask Scribe anything about your trading and get real answers. It reviews your closed trades, flags the habits helping and hurting you, and coaches you like a mentor who's studied your entire history — not a chatbot with a daily limit.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature">
+    <div class="wrap feat">
+      <div class="feat-img"><img src="assets/shot-card.png" alt="Scribe trade detail card"></div>
+      <div class="feat-copy">
+        <div class="eyebrow">Every Market</div>
+        <h2>Every market. One journal.</h2>
+        <p>Most journals stop at stocks. Scribe tracks it all — equities, options, crypto, forex, and prediction markets — so your entire trading life lives in one beautifully organized place. Get an instant AI review on any closed trade.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature">
+    <div class="wrap feat rev">
+      <div class="feat-img"><img src="assets/shot-score.png" alt="Scribe Trader Score and advanced metrics"></div>
+      <div class="feat-copy">
+        <div class="eyebrow">Advanced Metrics</div>
+        <h2>Know your real edge.</h2>
+        <p>Go beyond profit and loss. See your win rate, expectancy, and profit factor, and get your Scribe Trader Score — a single number that tells you how sound your trading really is. Double down on what works. Cut what doesn't.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature">
+    <div class="wrap feat">
+      <div class="feat-img"><img src="assets/shot-accounts.png" alt="Scribe multiple account tracking"></div>
+      <div class="feat-copy">
+        <div class="eyebrow">Multi-Account</div>
+        <h2>Separate accounts, clear picture.</h2>
+        <p>Trade an IRA, a brokerage, and a prediction account? Keep them separate or see them combined. Scribe tracks each account's balance and performance on its own, so you always know exactly where you stand.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature">
+    <div class="wrap feat rev">
+      <div class="feat-img"><img src="assets/shot-calendar.png" alt="Scribe trading calendar"></div>
+      <div class="feat-copy">
+        <div class="eyebrow">Effortless Journaling</div>
+        <h2>A journal you'll actually use.</h2>
+        <p>Logging a trade takes seconds. See every day, every trade, and every result on your calendar, set monthly goals, and turn the habit into insight — no spreadsheets, no clutter, no friction.</p>
+      </div>
+    </div>
+  </section>
+
 </div>
-</main>
+
+<section id="pricing">
+  <div class="wrap center">
+    <h2>Simple pricing. Serious value.</h2>
+    <p class="pricing-sub">Start free. Unlock everything with Scribe Pro.</p>
+
+    <table>
+      <thead>
+        <tr><th>All the tools you need to find your edge</th><th>Free</th><th>Pro</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>AI Trade Reviews</td><td>—</td><td>✓</td></tr>
+        <tr><td>AI-powered trade insights</td><td>—</td><td>✓</td></tr>
+        <tr><td>Import trades (stocks &amp; options)</td><td>—</td><td>✓</td></tr>
+        <tr><td>Trade journaling</td><td>5 / day</td><td>Unlimited</td></tr>
+        <tr><td>Metrics</td><td>Basic</td><td>Advanced</td></tr>
+        <tr><td>Multiple accounts</td><td>—</td><td>✓</td></tr>
+      </tbody>
+    </table>
+
+    <div class="plans">
+      <div class="plan featured">
+        <div class="badge">★ MOST POPULAR</div>
+        <div class="name">ANNUAL</div>
+        <div class="price">$4.17</div>
+        <div class="per">per month</div>
+        <div class="note">Billed annually at $49.99</div>
+        <div><span class="pill">Save $10 every year</span></div>
+      </div>
+      <div class="plan">
+        <div class="name">MONTHLY</div>
+        <div class="price">$4.99</div>
+        <div class="per">per month</div>
+      </div>
+    </div>
+
+    <p class="trial"><span class="shield">✓</span> 7-day free trial. Cancel anytime.</p>
+    <a class="btn" href="TODO_APP_STORE_URL">Start Your Free Trial</a>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>Questions, answered.</h2>
+
+    <details>
+      <summary>What markets does Scribe support?</summary>
+      <p>All of them — that's the point. Scribe is built for the modern trader: stocks, options, crypto, forex, and prediction markets (like Kalshi event contracts) are all first-class citizens. Whether you're swing trading equities, selling options, or trading event outcomes, everything lives in one journal.</p>
+    </details>
+
+    <details>
+      <summary>How does the AI coaching work?</summary>
+      <p>Scribe's AI has full context on your trading history — every trade, every account, every pattern. Ask it anything: "When do I trade best?", "Compare my IRA vs my prediction account", or run an instant AI Trade Review on any closed trade for sharp, specific feedback on your entry, exit, sizing, and risk. It can even search the web for market context.</p>
+    </details>
+
+    <details>
+      <summary>Can I import my existing trades?</summary>
+      <p>Yes — Scribe Pro imports stock and options trades via CSV from major brokers including Robinhood, Charles Schwab / thinkorswim, Webull, and Fidelity, with a preview step so you can confirm everything before it's added. And logging any trade manually takes just seconds.</p>
+    </details>
+
+    <details>
+      <summary>Is my trading data private?</summary>
+      <p>Completely. Scribe is a private journal — your data is encrypted, belongs to you, and is never sold or shared with advertisers. Scribe doesn't connect to your brokerage accounts or hold any credentials; you're always in control of what you log.</p>
+    </details>
+
+    <details>
+      <summary>Is there a free version?</summary>
+      <p>Yes. Scribe is free to download and use, with up to 5 journal entries per day and core performance metrics. Scribe Pro unlocks unlimited journaling, AI coaching and trade reviews, advanced metrics with your Trader Score, trade importing, and multiple accounts — with a 7-day free trial so you can experience everything before paying a cent.</p>
+    </details>
+
+    <details>
+      <summary>Does Scribe give financial advice?</summary>
+      <p>No — and that's by design. Scribe analyzes what you've already done to help you understand your own patterns and improve your process. It's AI-powered analysis of your trading, not financial advice or buy/sell recommendations. Your strategy stays yours.</p>
+    </details>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Start building your edge.</h2>
+    <p>Download Scribe and make every trade count.</p>
+    <a class="store-btn" href="TODO_APP_STORE_URL">
+      <svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+      Download on the App Store
+    </a>
+  </div>
+</section>
 
 <footer>
-  <div class="foot-inner">
-    <div>© 2026 O5na Labs LLC. Scribe is a product of O5na Labs LLC.</div>
+  <div class="wrap foot-inner">
+    <div>© 2026 O5na Labs LLC · Scribe</div>
     <div class="foot-links">
-      <a href="contact.html">Contact</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-      <a href="ai-disclosure.html">AI Disclosure</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/ai-disclosure.html">AI Disclosure</a>
+      <a href="/contact.html">Contact</a>
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var canvas = document.getElementById('bg-net');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var W, H, pts = [];
+  var LINK = 130;           // link distance (px)
+  var mouse = {x:-9999, y:-9999};
+
+  function resize(){
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    var target = Math.min(90, Math.floor(W * H / 22000)); // density cap
+    pts = [];
+    for (var i=0;i<target;i++){
+      pts.push({
+        x: Math.random()*W, y: Math.random()*H,
+        vx: (Math.random()-.5)*0.22, vy: (Math.random()-.5)*0.22,
+        r: Math.random()*1.6 + 0.6,
+        bright: Math.random() < 0.18   // some dots brighter gold
+      });
+    }
+  }
+
+  function step(){
+    ctx.clearRect(0,0,W,H);
+    // links
+    for (var i=0;i<pts.length;i++){
+      var a = pts[i];
+      for (var j=i+1;j<pts.length;j++){
+        var b = pts[j];
+        var dx = a.x-b.x, dy = a.y-b.y;
+        var d2 = dx*dx + dy*dy;
+        if (d2 < LINK*LINK){
+          var alpha = (1 - Math.sqrt(d2)/LINK) * 0.10;
+          ctx.strokeStyle = 'rgba(203,186,132,' + alpha.toFixed(3) + ')';
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+        }
+      }
+    }
+    // dots
+    for (var k=0;k<pts.length;k++){
+      var p = pts[k];
+      // gentle drift
+      p.x += p.vx; p.y += p.vy;
+      // soft mouse parallax push
+      var mdx = p.x - mouse.x, mdy = p.y - mouse.y;
+      var md2 = mdx*mdx + mdy*mdy;
+      if (md2 < 16000){
+        var f = (16000 - md2) / 16000 * 0.35;
+        p.x += (mdx/Math.sqrt(md2||1)) * f;
+        p.y += (mdy/Math.sqrt(md2||1)) * f;
+      }
+      // wrap edges
+      if (p.x < -10) p.x = W+10; if (p.x > W+10) p.x = -10;
+      if (p.y < -10) p.y = H+10; if (p.y > H+10) p.y = -10;
+      ctx.fillStyle = p.bright ? 'rgba(248,221,149,0.55)' : 'rgba(203,186,132,0.30)';
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
+    }
+    if (!reduced) requestAnimationFrame(step);
+  }
+
+  window.addEventListener('resize', function(){ resize(); if (reduced) step(); });
+  window.addEventListener('mousemove', function(e){ mouse.x = e.clientX; mouse.y = e.clientY; });
+  document.addEventListener('visibilitychange', function(){
+    if (!document.hidden && !reduced) requestAnimationFrame(step);
+  });
+
+  resize();
+  step(); // draws once even in reduced-motion mode (static constellation)
+})();
+</script>
 
 </body>
 </html>
